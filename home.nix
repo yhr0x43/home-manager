@@ -5,6 +5,7 @@
     ./emacs.nix
     ./dunst.nix
     ./rime.nix
+    ./sway.nix
     ./zsh.nix
   ];
 
@@ -29,7 +30,7 @@
     templates = "${config.home.homeDirectory}/Templates";
     videos = "${config.home.homeDirectory}/vid";
   };
-  
+
   programs.password-store = {
     enable = true;
     package = with pkgs; symlinkJoin {
