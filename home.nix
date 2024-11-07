@@ -64,6 +64,7 @@
     # Editors
     jetbrains.idea-community
 
+
     # Misc. Unix-ish tools
     fzf
     lm_sensors
@@ -71,12 +72,13 @@
     nixfmt-rfc-style
     silver-searcher
     zeal
+    
+    localsend
 
     # Media
     xournalpp
     simple-scan
     texlive.combined.scheme-full
-    
     mpv
     feh
 
@@ -85,7 +87,10 @@
 
     # python38Packages.xdot
 
+    maestral
+
     (aspellWithDicts (d: [ d.en d.en-computers ]))
+    ispell
   ];
 
   home.file = {
