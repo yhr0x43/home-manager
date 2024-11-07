@@ -44,15 +44,8 @@
 (with-eval-after-load 'rainbow-delimiters
   (add-hook 'emacs-lisp-mode-hook #'rainbow-delimiters-mode))
 
-(defun rc/duplicate-line()
-  (interactive)
-  (move-beginning-of-line 1)
-  (kill-line)
-  (yank)
-  (open-line 1)
-  (next-line 1)
-  (yank))
-(global-set-key (kbd "C-,") 'rc/duplicate-line)
+(global-set-key (kbd "C-,") 'duplicate-line)
+(global-set-key (kbd "C-.") 'copy-from-above-command)
 
 (defun rc/display-fill-column ()
   (display-fill-column-indicator-mode t))
