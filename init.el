@@ -65,7 +65,8 @@
 (custom-set-variables
  '(custom-enabled-themes '(tango-dark))
  '(display-line-numbers 'relative)
- '(inhibit-startup-screen t))
+ '(inhibit-startup-screen t)
+ '(font-latex-fontify-script nil))
 
 (custom-set-faces
  )
