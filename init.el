@@ -66,7 +66,8 @@
  '(custom-enabled-themes '(tango-dark))
  '(display-line-numbers 'relative)
  '(inhibit-startup-screen t)
- '(font-latex-fontify-script nil))
+ '(font-latex-fontify-script nil)
+ '(indent-tabs-mode nil))
 
 (custom-set-faces
  )
