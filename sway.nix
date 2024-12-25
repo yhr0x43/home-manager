@@ -126,6 +126,10 @@ in
             "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
 
           "${cfg.config.modifier}+r" = "mode resize";
+          
+          "XF86AudioRaiseVolume" = "exec pamixer -i 5";
+          "XF86AudioLowerVolume" = "exec pamixer -d 5";
+          "XF86AudioMute" = "exec pamixer -m";
         };
       startup = [
         #{ command = "firefox"; }
