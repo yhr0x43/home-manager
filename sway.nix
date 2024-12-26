@@ -154,6 +154,7 @@ in
     mako # notification daemon
     pamixer
     playerctl
+    xfce.thunar
     #FIXME: fcitx5 seems not working with alacritty, relegated to using XWayland
     #(writeShellScriptBin "alacritty" ''WINIT_UNIX_BACKEND=x11 ${pkgs.alacritty}/bin/alacritty "$@"'')
   ];  
