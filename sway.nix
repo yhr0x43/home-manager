@@ -45,7 +45,7 @@ in
     enable = true;
     config = rec {
       bars = [{
-        statusCommand = "${pkgs.i3status}/bin/i3status";
+        command = "${pkgs.waybar}/bin/waybar";
       }];
       modifier = "Mod4";
       terminal = "alacritty";
@@ -164,7 +164,10 @@ in
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [ xdg-desktop-portal-gtk xdg-desktop-portal-wlr ];
-    config.common.default = "*";
+    config = {
+      common.default = "*";
+      sway.default = lib.mkDefault [ "wlr" "gtk" ];
+    };
   };
 
   # screenshots
