@@ -12,7 +12,7 @@
   home.username = "yhrc";
   home.homeDirectory = "/home/yhrc";
 
-  home.stateVersion = "24.05";
+  home.stateVersion = "24.11";
 
   xdg.enable = true;
 
