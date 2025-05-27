@@ -132,7 +132,7 @@ in
           "XF86AudioMute" = "exec pamixer -m";
         };
       startup = [
-        #{ command = "firefox"; }
+        { command = "fcitx5"; }
       ];
     };
   };
@@ -149,9 +149,9 @@ in
     configure-gtk
     wl-clipboard
     xdg-utils # for openning default programms when clicking links
-    glib # gsettings
-    bemenu # wayland clone of dmenu
-    mako # notification daemon
+    glib      # gsettings
+    bemenu    # wayland clone of dmenu
+    mako      # notification daemon
     pamixer
     playerctl
     xfce.thunar
