@@ -44,6 +44,15 @@
 (with-eval-after-load 'rainbow-delimiters
   (add-hook 'emacs-lisp-mode-hook #'rainbow-delimiters-mode))
 
+(with-eval-after-load 'web-mode
+  (add-hook 'auto-mode-alist '("\\.html\\'"   . web-mode))
+  (add-hook 'auto-mode-alist '("\\.cshtml\\'" . web-mode))
+  (add-hook 'auto-mode-alist '("\\.svelte\\'" . web-mode)))
+(setq web-mode-engines-alist
+      '(("razor"  . "\\.cshtml\\'")
+	("blade"  . "\\.blade\\.")
+	("svelte" . "\\.svelte\\.")))
+
 (global-set-key (kbd "C-,") 'duplicate-line)
 (global-set-key (kbd "C-.") 'copy-from-above-command)
 
