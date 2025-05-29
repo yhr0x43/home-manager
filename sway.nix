@@ -44,92 +44,98 @@ in
   wayland.windowManager.sway = {
     enable = true;
     config = rec {
-      bars = [{
-        command = "${pkgs.waybar}/bin/waybar";
-      }];
+      bars = [
+        { command = "${pkgs.waybar}/bin/waybar"; }
+      ];
+      floating.criteria = [
+        { class = "wechat"; }
+        { window_type = "dialog"; }
+        { window_role = "dialog"; }
+      ];
+      window.commands = [
+        {
+          command = "title_format \"[XWayland] %title\"";
+          criteria = { shell = "xwayland"; };
+        }
+      ];
       modifier = "Mod4";
       terminal = "alacritty";
       menu = "bemenu-run";
       output.eDP-1.scale = "1.5";
-      keybindings = let cfg = config.wayland.windowManager.sway; in {
-          "${cfg.config.modifier}+Return" = "exec ${cfg.config.terminal}";
-          "${cfg.config.modifier}+Shift+q" = "kill";
-          "${cfg.config.modifier}+d" = "exec ${cfg.config.menu}";
+      keybindings = let cfg = config.wayland.windowManager.sway.config; in {
+          "${cfg.modifier}+Return" = "exec ${cfg.terminal}";
+          "${cfg.modifier}+Shift+q" = "kill";
+          "${cfg.modifier}+d" = "exec ${cfg.menu}";
 
-          "${cfg.config.modifier}+${cfg.config.left}" = "focus left";
-          "${cfg.config.modifier}+${cfg.config.down}" = "focus down";
-          "${cfg.config.modifier}+${cfg.config.up}" = "focus up";
-          "${cfg.config.modifier}+${cfg.config.right}" = "focus right";
+          "${cfg.modifier}+${cfg.left}"  = "focus left";
+          "${cfg.modifier}+${cfg.down}"  = "focus down";
+          "${cfg.modifier}+${cfg.up}"    = "focus up";
+          "${cfg.modifier}+${cfg.right}" = "focus right";
 
-          "${cfg.config.modifier}+Left" = "focus left";
-          "${cfg.config.modifier}+Down" = "focus down";
-          "${cfg.config.modifier}+Up" = "focus up";
-          "${cfg.config.modifier}+Right" = "focus right";
+          "${cfg.modifier}+Left"  = "focus left";
+          "${cfg.modifier}+Down"  = "focus down";
+          "${cfg.modifier}+Up"    = "focus up";
+          "${cfg.modifier}+Right" = "focus right";
 
-          "${cfg.config.modifier}+Shift+${cfg.config.left}" = "move left";
-          "${cfg.config.modifier}+Shift+${cfg.config.down}" = "move down";
-          "${cfg.config.modifier}+Shift+${cfg.config.up}" = "move up";
-          "${cfg.config.modifier}+Shift+${cfg.config.right}" = "move right";
+          "${cfg.modifier}+Shift+${cfg.left}"  = "move left";
+          "${cfg.modifier}+Shift+${cfg.down}"  = "move down";
+          "${cfg.modifier}+Shift+${cfg.up}"    = "move up";
+          "${cfg.modifier}+Shift+${cfg.right}" = "move right";
 
-          "${cfg.config.modifier}+Shift+Left" = "move left";
-          "${cfg.config.modifier}+Shift+Down" = "move down";
-          "${cfg.config.modifier}+Shift+Up" = "move up";
-          "${cfg.config.modifier}+Shift+Right" = "move right";
+          "${cfg.modifier}+Shift+Left"  = "move left";
+          "${cfg.modifier}+Shift+Down"  = "move down";
+          "${cfg.modifier}+Shift+Up"    = "move up";
+          "${cfg.modifier}+Shift+Right" = "move right";
 
-          "${cfg.config.modifier}+b" = "splith";
-          "${cfg.config.modifier}+v" = "splitv";
-          "${cfg.config.modifier}+f" = "fullscreen toggle";
-          "${cfg.config.modifier}+a" = "focus parent";
-          "${cfg.config.modifier}+t" = "floating toggle";
+          "${cfg.modifier}+b" = "splith";
+          "${cfg.modifier}+v" = "splitv";
+          "${cfg.modifier}+a" = "focus parent";
+          "${cfg.modifier}+f" = "fullscreen toggle";
+          "${cfg.modifier}+t" = "floating toggle";
 
-          "${cfg.config.modifier}+s" = "layout stacking";
-          "${cfg.config.modifier}+w" = "layout tabbed";
-          "${cfg.config.modifier}+e" = "layout toggle split";
+          "${cfg.modifier}+s" = "layout stacking";
+          "${cfg.modifier}+w" = "layout tabbed";
+          "${cfg.modifier}+e" = "layout toggle split";
 
-          "${cfg.config.modifier}+1" = "workspace number 1";
-          "${cfg.config.modifier}+2" = "workspace number 2";
-          "${cfg.config.modifier}+3" = "workspace number 3";
-          "${cfg.config.modifier}+4" = "workspace number 4";
-          "${cfg.config.modifier}+5" = "workspace number 5";
-          "${cfg.config.modifier}+6" = "workspace number 6";
-          "${cfg.config.modifier}+7" = "workspace number 7";
-          "${cfg.config.modifier}+8" = "workspace number 8";
-          "${cfg.config.modifier}+9" = "workspace number 9";
-          "${cfg.config.modifier}+0" = "workspace number 10";
+          "${cfg.modifier}+1" = "workspace number 1";
+          "${cfg.modifier}+2" = "workspace number 2";
+          "${cfg.modifier}+3" = "workspace number 3";
+          "${cfg.modifier}+4" = "workspace number 4";
+          "${cfg.modifier}+5" = "workspace number 5";
+          "${cfg.modifier}+6" = "workspace number 6";
+          "${cfg.modifier}+7" = "workspace number 7";
+          "${cfg.modifier}+8" = "workspace number 8";
+          "${cfg.modifier}+9" = "workspace number 9";
+          "${cfg.modifier}+0" = "workspace number 10";
 
-          "${cfg.config.modifier}+Shift+1" =
-            "move container to workspace number 1";
-          "${cfg.config.modifier}+Shift+2" =
-            "move container to workspace number 2";
-          "${cfg.config.modifier}+Shift+3" =
-            "move container to workspace number 3";
-          "${cfg.config.modifier}+Shift+4" =
-            "move container to workspace number 4";
-          "${cfg.config.modifier}+Shift+5" =
-            "move container to workspace number 5";
-          "${cfg.config.modifier}+Shift+6" =
-            "move container to workspace number 6";
-          "${cfg.config.modifier}+Shift+7" =
-            "move container to workspace number 7";
-          "${cfg.config.modifier}+Shift+8" =
-            "move container to workspace number 8";
-          "${cfg.config.modifier}+Shift+9" =
-            "move container to workspace number 9";
-          "${cfg.config.modifier}+Shift+0" =
-            "move container to workspace number 10";
+          "${cfg.modifier}+Shift+1" = "move container to workspace number 1";
+          "${cfg.modifier}+Shift+2" = "move container to workspace number 2";
+          "${cfg.modifier}+Shift+3" = "move container to workspace number 3";
+          "${cfg.modifier}+Shift+4" = "move container to workspace number 4";
+          "${cfg.modifier}+Shift+5" = "move container to workspace number 5";
+          "${cfg.modifier}+Shift+6" = "move container to workspace number 6";
+          "${cfg.modifier}+Shift+7" = "move container to workspace number 7";
+          "${cfg.modifier}+Shift+8" = "move container to workspace number 8";
+          "${cfg.modifier}+Shift+9" = "move container to workspace number 9";
+          "${cfg.modifier}+Shift+0" = "move container to workspace number 10";
 
-          "${cfg.config.modifier}+Shift+minus" = "move scratchpad";
-          "${cfg.config.modifier}+minus" = "scratchpad show";
+          "${cfg.modifier}+Shift+minus" = "move scratchpad";
+          "${cfg.modifier}+minus"       = "scratchpad show";
 
-          "${cfg.config.modifier}+Shift+c" = "reload";
-          "${cfg.config.modifier}+Shift+e" =
+          "${cfg.modifier}+Shift+c" = "reload";
+          "${cfg.modifier}+Shift+e" =
             "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
 
-          "${cfg.config.modifier}+r" = "mode resize";
+          "${cfg.modifier}+r" = "mode resize";
           
           "XF86AudioRaiseVolume" = "exec pamixer -i 5";
           "XF86AudioLowerVolume" = "exec pamixer -d 5";
           "XF86AudioMute" = "exec pamixer -m";
+
+          "XF86MonBrightnessUp"   = "exec light -A 5";
+          "XF86MonBrightnessDown" = "exec light -U 5";
+
+          "Print" = "exec grim  -g \"$(slurp)\" /tmp/$(date +'%H:%M:%S.png')";
         };
       startup = [
         { command = "fcitx5"; }
@@ -151,12 +157,10 @@ in
     xdg-utils # for openning default programms when clicking links
     glib      # gsettings
     bemenu    # wayland clone of dmenu
-    mako      # notification daemon
+    wev
     pamixer
     playerctl
     xfce.thunar
-    #FIXME: fcitx5 seems not working with alacritty, relegated to using XWayland
-    #(writeShellScriptBin "alacritty" ''WINIT_UNIX_BACKEND=x11 ${pkgs.alacritty}/bin/alacritty "$@"'')
   ];  
 
   # warning: xdg-desktop-portal 1.17 reworked how portal implementations are loaded
@@ -170,8 +174,6 @@ in
     };
   };
 
-  # screenshots
-  # bindsym $mod+c exec grim  -g "$(slurp)" /tmp/$(date +'%H:%M:%S.png')
   # systemd.user.services.swayidle = {
   #   description = "Idle Manager for Wayland";
   #   documentation = [ "man:swayidle(1)" ];

@@ -21,14 +21,14 @@
 
   xdg.userDirs = {
     enable = true;
-    desktop = "${config.home.homeDirectory}";
-    documents = "${config.home.homeDirectory}/dox";
-    download = "${config.home.homeDirectory}/dl";
-    music = "${config.home.homeDirectory}/mus";
-    pictures = "${config.home.homeDirectory}/pic";
+    desktop     = "${config.home.homeDirectory}";
+    documents   = "${config.home.homeDirectory}/dox";
+    download    = "${config.home.homeDirectory}/dl";
+    music       = "${config.home.homeDirectory}/mus";
+    pictures    = "${config.home.homeDirectory}/pic";
     publicShare = "${config.home.homeDirectory}/pub";
-    templates = "${config.home.homeDirectory}/Templates";
-    videos = "${config.home.homeDirectory}/vid";
+    templates   = "${config.home.homeDirectory}/Templates";
+    videos      = "${config.home.homeDirectory}/vid";
   };
 
   programs.password-store = {
@@ -61,9 +61,10 @@
     firefox
     filezilla
 
-    # Editors
+    # Developer
     jetbrains.idea-community
-
+    vscodium
+    zeal
 
     # Misc. Unix-ish tools
     fzf
@@ -71,7 +72,7 @@
     ncdu
     nixfmt-rfc-style
     silver-searcher
-    zeal
+    appimage-run
     
     localsend
 
@@ -84,11 +85,11 @@
 
     # Office
     libreoffice-fresh
-
-    # python38Packages.xdot
+    calcurse
 
     maestral
 
+    #(hunspellWithDicts (with hunspellDicts; [ en-us ]))
     (aspellWithDicts (d: [ d.en d.en-computers ]))
     ispell
   ];
@@ -107,7 +108,9 @@
   };
 
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    BROWSER = "firefox";
+    #EDITOR = "emacs";
+    #GNUPGHOME = "~/.local/share/gnupg";
   };
 
   # Let Home Manager install and manage itself.
