@@ -58,6 +58,7 @@
 
   home.packages = with pkgs; [
     # Browsers
+    librewolf
     firefox
     filezilla
 
@@ -73,6 +74,7 @@
     nixfmt-rfc-style
     silver-searcher
     appimage-run
+    usbutils
     
     localsend
 
@@ -82,6 +84,9 @@
     texlive.combined.scheme-full
     mpv
     feh
+    ffmpeg
+    imagemagick
+    gimp
 
     # Office
     libreoffice-fresh
